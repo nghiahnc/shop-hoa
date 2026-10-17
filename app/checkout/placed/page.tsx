@@ -1,0 +1,4 @@
+import Link from "next/link";
+import StoreHeader from "@/app/store/StoreHeader";
+import { currentUser } from "@/lib/session";
+export default async function Placed({ searchParams }: { searchParams: Promise<{ code?: string }> }) { const [user,params] = await Promise.all([currentUser(),searchParams]); return <div className="storefront"><StoreHeader user={user}/><main className="store-container"><div className="store-success"><span>✿</span><p className="store-overline">CẢM ƠN BẠN ĐÃ CHỌN MỘC HOA</p><h1>Đơn hoa đã được ghi nhận.</h1><p>Mã đơn <b>{params.code ?? "—"}</b>. Tiệm sẽ chuẩn bị hoa và xác nhận giao hàng. Bạn thanh toán khi nhận hoa.</p><div><Link className="store-primary-link" href="/account/orders">Theo dõi đơn hàng ↗</Link><Link href="/products">Tiếp tục xem hoa</Link></div></div></main></div>; }

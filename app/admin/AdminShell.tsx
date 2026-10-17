@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { signOut } from "@/auth";
+export default function AdminShell({ title, children }: { title:string; children:React.ReactNode }) {
+  return <div className="shell"><aside className="sidebar"><Link href="/admin" className="brand"><span className="brand-mark">MH</span><div><strong>Mộc Hoa</strong><small>STUDIO / ADMIN</small></div></Link><div className="side-label">QUẢN TRỊ CỬA HÀNG</div><nav className="nav"><Link href="/admin"><span>▦</span> Tổng quan</Link><Link href="/admin/orders"><span>▤</span> Đơn hàng</Link><Link href="/admin/products"><span>◇</span> Sản phẩm & kho</Link><Link href="/"><span>↗</span> Xem cửa hàng</Link></nav><form action={async () => { "use server"; await signOut({ redirectTo:"/" }); }}><button className="admin-logout">Đăng xuất</button></form></aside><main className="main"><div className="topbar"><span className="breadcrumb">WORKSPACE <span>/</span> <b>{title.toUpperCase()}</b></span><span className="avatar">AD</span></div><div className="content">{children}</div></main></div>;
+}

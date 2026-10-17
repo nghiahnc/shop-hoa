@@ -1,0 +1,11 @@
+.env*
+.neon
+.agents
+.backups
+.next
+artifacts
+tests
+db
+scripts
+neon.ts
+*.log

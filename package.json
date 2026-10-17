@@ -1,0 +1,43 @@
+{
+  "name": "shop-hoa-dashboard",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3001",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 3001",
+    "db:migrate": "node db/migrate.mjs",
+    "db:seed": "node db/seed.mjs",
+    "db:seed-demo": "node db/seed-demo.mjs",
+    "db:verify": "node db/verify.mjs",
+    "test:auth": "node tests/storefront-auth.mjs",
+    "secrets:vercel": "node scripts/vercel-secrets.mjs",
+    "deploy:vercel": "npx --yes vercel@64.2.0 deploy --prod"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "next": "16.4.1",
+    "next-auth": "^5.0.0-beta.32",
+    "pg": "^8.23.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "stripe": "^23.0.0",
+    "zod": "^4.6.7",
+    "@vercel/functions": "3.10.1",
+    "@aws-sdk/client-s3": "3.1152.0",
+    "@aws-sdk/s3-presigned-post": "3.1152.0",
+    "@aws-sdk/s3-request-presigner": "3.1152.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.15.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "@neon/config": "1.9.1",
+    "undici": "6.29.1"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}
