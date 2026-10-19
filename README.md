@@ -89,3 +89,7 @@ Vercel chạy Next.js Node.js; Neon chỉ cung cấp database/dịch vụ backen
 - [Ảnh mobile](artifacts/homepage/mobile.jpg)
 
 Giữ nguyên ghi công và giấy phép của ảnh, font, thư viện khi sử dụng lại.
+
+## Giao diện editorial — 19/10/2026
+
+Cửa hàng dùng bố cục tham khảo Louis Vuitton, với nội dung riêng của thương hiệu: ảnh chiến dịch tràn ngang, header giữa, menu/tìm kiếm/bộ lọc dạng dialog và các trang mua hàng đồng bộ. Thành phần dùng chung nằm trong `components/boutique`, CSS giới hạn trong `.boutique`; `/admin` giữ giao diện hiện có. Xem [kết quả kiểm thử và ảnh desktop/mobile](artifacts/homepage/QA.md) và [nguồn ảnh](ASSET_SOURCES.md).

@@ -1,26 +1,28 @@
-# Mộc Hoa — kiểm tra trang chủ 15/10/2026
+# Mộc Hoa — nghiệm thu giao diện 19/10/2026
 
-## Kết quả chung
+## Thay đổi
 
-- `npm run build` thành công, gồm TypeScript và toàn bộ route hiện có.
-- Browser QA ở 375×812, 768×1024, 1024×900, 1440×900: không tràn ngang; header 72px trên mobile, 80px desktop/tablet. Ảnh khám phá chuyển thành một cột trên mobile.
-- Menu: focus ban đầu ở nút đóng; Tab/Shift+Tab quay vòng trong dialog; Escape đóng và trả focus; cuộn nền được khóa và khôi phục.
-- Toàn bộ chín ảnh trong nội dung tải thành công sau khi cuộn; các khối reveal hiện đầy đủ. Đã kiểm tra ảnh toàn trang desktop và mobile.
-- Hero tải eager với fetchPriority high. Không thêm package animation. Hover phóng ảnh tối đa 3%.
-- Reduced motion được kiểm tra trong mã: CSS tắt animation/transition và trạng thái reveal ẩn; hook bỏ qua IntersectionObserver nếu bật giảm chuyển động. Không đổi thiết lập hệ điều hành để thử nghiệm. HTML chỉ dùng cuộn native khi trang chủ hiện diện, không ảnh hưởng route khác.
-- Kiểm tra render với tồn 0 và tồn 3: nút hết hàng bị khóa, sản phẩm còn hàng cho phép thêm. Không thay đổi tồn kho/database để kiểm tra.
-- Các route sản phẩm, chi tiết, đăng nhập, đăng ký, giỏ trả HTTP 200. Khi chưa đăng nhập, checkout và đơn hàng chuyển đúng về đăng nhập. Các trang này dùng UI hiện có.
-- Đã dọn sản phẩm thêm thử, không đặt đơn hoặc gọi thanh toán. API, database, các trang khác và shop-cafe không được chỉnh sửa.
+- Tham khảo bố cục [Louis Vuitton Việt Nam](https://vn.louisvuitton.com/vie-vn/homepage): header giữa, banner tràn ngang, danh mục, ảnh bộ sưu tập, sản phẩm tuyển chọn, câu chuyện và footer.
+- Thống nhất giao diện khách hàng từ trang chủ đến catalog, chi tiết, giỏ, checkout, đăng nhập/đăng ký và lịch sử đơn; header/footer dùng chung trong dự án.
+- Menu, tìm kiếm và bộ lọc dùng native dialog; chuyển trạng thái header theo cuộn; bộ lọc giữ GET và tham số hiện có.
+- Dùng Next Image trên các ảnh cửa hàng; ảnh đầu trang preload, ảnh còn lại lazy; bổ sung hai ảnh editorial với nguồn tại ASSET_SOURCES.md.
+- Giỏ/checkout có trạng thái khôi phục dữ liệu trước khi hiện giỏ trống. Giữ giao diện quản trị, API, schema và định dạng giỏ hàng.
 
-## Ảnh nghiệm thu
+## Kiểm thử đã thực hiện
 
-- `desktop.jpg`, `desktop-full.jpg`: 1440×900, đầu trang và toàn trang.
-- `mobile.jpg`, `mobile-full.jpg`: 375×812, đầu trang và toàn trang.
-- Ảnh chụp trên dev server có biểu tượng Next.js Dev Tools, không xuất hiện trong production.
+- `npm run build`: PASS, gồm TypeScript và toàn bộ route.
+- Browser với viewport được xác nhận thực tế: 375×812, 768×900, 1024×900, 1440×900. Kiểm tra trang chủ, danh sách, chi tiết, giỏ trống, đăng nhập và đăng ký; không tràn ngang, không chồng header, không ảnh lỗi, mỗi trang có một h1 sau khi tải.
+- Checkout với giỏ có sản phẩm: PASS ở bốn chiều rộng trên, không tràn ngang.
+- Bộ lọc danh mục và tìm kiếm không có kết quả: PASS; tham số URL và kết quả đúng. Danh mục hoa hồng trả 2 sản phẩm, Matcha 3 món, phụ kiện thời trang 2 sản phẩm trong bộ dữ liệu thử tương ứng.
+- Menu: focus ban đầu ở nút đóng, Escape đóng và trả focus về nút menu, khóa/khôi phục cuộn nền. Native dialog và trap Tab/Shift+Tab giới hạn focus bên trong.
+- API trên database thử: route công khai, đăng nhập đúng/sai, phân quyền khách/quản trị, checkout/lịch sử, đơn nhiều sản phẩm, hủy và hoàn tồn kho đều PASS. Trang admin trả 200 và không có boutique frame.
+- Đã đặt hoa COD, mở lịch sử và hủy đơn qua UI; kiểm tra hoàn tồn kho bằng API/database thử.
+- Các thay đổi không sửa endpoint, schema, Stripe/webhook hoặc mã nghiệp vụ quản trị. Không chạy migration/seed hay đặt/hủy đơn trên production trong đợt QA này.
+- Reduced motion được kiểm tra trong source CSS; không thay thiết lập hệ điều hành. Không thực hiện lại thanh toán Stripe trong đợt chỉnh UI; giữ luồng sandbox đang cấu hình trên website.
 
-## Kiểm tra riêng
+## Môi trường và bằng chứng
 
-- Thêm Bó hồng phấn Dịu Dàng từ trang chủ: giỏ tăng 0 → 1; thông báo thêm thành công; trang giỏ hiển thị đúng 420.000 ₫.
-- Ô Sinh nhật mở đúng bộ lọc, chọn giá trị “Sinh nhật” và hiển thị hai sản phẩm; cả bốn URL theo dịp trả HTTP 200.
-- Chữ xanh lá trên nền ngà đạt 10,66:1; chữ hồng trầm 5,63:1; chữ phụ 5,78:1.
-- Kiểm tra tại localhost:3001 với phiên khách. Trên 127.0.0.1 ban đầu gặp cảnh báo JWT vì cookie Auth.js từ ứng dụng khác trên cùng hostname; không thay đổi cơ chế xác thực ngoài phạm vi giao diện. Bản kiểm tra và bàn giao dùng localhost.
+- Build production chạy bằng Next start tại localhost:3101/3102/3103, tương ứng ba database PostgreSQL thử riêng `boutique_qa_*_20261019` trên 127.0.0.1.
+- Credentials và log kiểm thử nằm ngoài Git. Các đơn thử qua UI đã hủy; fixture API đã dọn trong database thử.
+- `desktop.jpg`: trang chủ 1440×900; `mobile.jpg`: trang chủ 375×812. Ảnh chụp catalog/chi tiết/checkout và JSON kiểm thử bổ sung lưu cục bộ, không commit.
+- Kết quả tổng hợp của ba shop: 72 tổ hợp trang/kích thước và 12 kiểm tra checkout có sản phẩm đều không tràn ngang.

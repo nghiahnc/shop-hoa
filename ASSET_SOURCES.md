@@ -25,3 +25,12 @@ Bản ảnh rộng 2400px được lưu cục bộ từ các nguồn Pexels đã
 | --- | --- | --- |
 | home-bouquet.jpg | Lara | [Bouquet of Flowers on the Table](https://www.pexels.com/photo/bouquet-of-flowers-on-the-table-19300892/) |
 | home-florist.jpg | Andrea Piacquadio | [A Variety of Flowers on Table](https://www.pexels.com/photo/a-variety-of-flowers-on-table-3932778/) |
+
+## Bộ ảnh editorial — 19/10/2026
+
+Ảnh Pexels lưu cục bộ, bản rộng tối đa 2200px, theo [giấy phép Pexels](https://www.pexels.com/license/). Tác giả được ghi trên trang nguồn. Ảnh chiến dịch ưu tiên tải; các ảnh khác tải chậm, có kích thước và crop responsive.
+
+| Tệp | Nguồn |
+| --- | --- |
+| editorial-hero.jpg | [Pexels #4612210](https://www.pexels.com/photo/florist-arranging-a-bouquet-of-flowers-4612210/) |
+| editorial-story.jpg | [Pexels #5414007](https://www.pexels.com/photo/focused-florists-working-in-creative-floral-shop-5414007/) |
